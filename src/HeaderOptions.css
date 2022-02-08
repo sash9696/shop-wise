@@ -1,0 +1,16 @@
+.headerOptions{
+    margin-top: 2px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: white;
+}
+.headerOptions:hover{
+    opacity: 0.8;
+}
+.headerOptions > h4{
+    opacity: 0.6;
+    font-size: 0.8rem;
+}
+.headerOptions > h2{
+    font-size: 1rem;
+}
