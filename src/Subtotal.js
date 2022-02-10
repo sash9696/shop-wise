@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CurrencyFormat from "react-currency-format";
 import "./Subtotal.css";
 import { useStateValue } from "./StateProvider";
 import { getBasketTotal } from "./reducer";
+import db from "./firebase";
+import {loadStripe} from '@stripe/stripe-js';
 
 function Subtotal() {
-  const [{ basket }] = useStateValue();
+  const [{ basket, user }] = useStateValue();
+  const value = getBasketTotal(basket)
+  
+    
 
   return (
     <div className="subtotal">
@@ -22,12 +27,12 @@ function Subtotal() {
           </React.Fragment>
         )}
         decimalScale={2}
-        value={getBasketTotal(basket)}
+        value={value}
         displayType={"text"}
         thousandSeparator={true}
         prefix={"₹"}
       />
-      <button>Proceed to checkout</button>
+      <button >Proceed to checkout</button>
     </div>
   );
 }

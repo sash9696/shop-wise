@@ -23,6 +23,7 @@ const reducer = (state, action) => {
             ...state,
             basket: [...state.basket, action.item]
         };
+        
       case "REMOVE_FROM_BASKET":
         //logic to remove item from the basket
         let newBasket = [...state.basket]

@@ -10,10 +10,11 @@ import Checkout from './Checkout';
 import Login from './Login';
 import { useEffect } from 'react';
 import { useStateValue } from './StateProvider';
-import { auth } from './firebase';
+import db, { auth } from './firebase';
 
 function App() {
   const [{basket, user}, dispatch] = useStateValue()
+  console.log(basket)
   useEffect(()=>{
     auth.onAuthStateChanged((authUser) => {
       if(authUser){
@@ -22,6 +23,8 @@ function App() {
           type: 'SET_USER',
           user: authUser
         })
+       
+
       }
       else{
         //user logged out

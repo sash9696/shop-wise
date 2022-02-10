@@ -1,4 +1,5 @@
 import React from 'react';
+import db from './firebase';
 import './Product.css';
 import { useStateValue } from './StateProvider';
 
@@ -16,8 +17,8 @@ function Product({id, title, price, rating, image}) {
                 image: image
             }
         })
-    }
-    
+        
+    }    
 
   return (
     <div className='product'>

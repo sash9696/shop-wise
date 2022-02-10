@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Header.css'
 import HeaderOptions from './HeaderOptions';
 import { Link } from 'react-router-dom';
@@ -6,15 +6,26 @@ import SearchIcon from '@material-ui/icons/Search'
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
 import { useStateValue } from './StateProvider';
 import { auth } from './firebase';
+import Dropdown from './Dropdown';
 
 function Header() {
     const [{basket, user}] = useStateValue();
+    const [isOpen, setIsOpen] = useState(false)
+    
+   const showDropdown = () => {
+       if(!isOpen){
+           setIsOpen(true)
+           return
+       }
+       else{
+           setIsOpen(false)
+       }
+   }
     
     const login = () => {
         if(user){
             auth.signOut();
-        }
-        
+        }  
     }
   return (
   <div className='header'>
@@ -34,13 +45,21 @@ function Header() {
       <div className="header_right">
             <Link to={!user && '/login'}>
                 <div onClick={login} className="header_options">
-                     <HeaderOptions  header='Hello' title={!user ? 'Sign In' : 'Sign Out' }/>
+                     <HeaderOptions  header='Hello' email={user?.email} title={!user ? 'Sign In' : 'Sign Out' }/>
                 </div>
                 
             </Link>
-            <Link to='/'>
-                <HeaderOptions header='Returns' title='& Orders' /> 
-            </Link>
+            <div onClick={showDropdown}  className="return">
+                <Link to='/'>
+                    <HeaderOptions header='Returns' title='& Orders' /> 
+                </Link>
+                <div>
+                    {isOpen  ? <Dropdown/> : (
+                        ''
+                    )}
+                </div>
+            </div>
+            
             <Link to='/subscription'>
                 <HeaderOptions header='Your' title='Subscription' /> 
             </Link>

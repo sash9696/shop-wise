@@ -1,0 +1,9 @@
+.dropdown{
+    position: absolute;
+    left: 70%;
+    z-index: 999;
+    width: 400px;
+    height: 500px;
+    background-color: gray;
+}
+
