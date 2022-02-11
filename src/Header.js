@@ -6,21 +6,13 @@ import SearchIcon from '@material-ui/icons/Search'
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
 import { useStateValue } from './StateProvider';
 import { auth } from './firebase';
-import Dropdown from './Dropdown';
+
 
 function Header() {
     const [{basket, user}] = useStateValue();
     const [isOpen, setIsOpen] = useState(false)
     
-   const showDropdown = () => {
-       if(!isOpen){
-           setIsOpen(true)
-           return
-       }
-       else{
-           setIsOpen(false)
-       }
-   }
+   
     
     const login = () => {
         if(user){
@@ -49,15 +41,11 @@ function Header() {
                 </div>
                 
             </Link>
-            <div onClick={showDropdown}  className="return">
+            <div   className="return">
                 <Link to='/'>
                     <HeaderOptions header='Returns' title='& Orders' /> 
                 </Link>
-                <div>
-                    {isOpen  ? <Dropdown/> : (
-                        ''
-                    )}
-                </div>
+                
             </div>
             
             <Link to='/subscription'>

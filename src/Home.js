@@ -1,8 +1,16 @@
-import React from 'react';
+import React,{ useEffect, useState }  from 'react'; 
 import './Home.css';
 import Product from './Product';
 
 function Home() {
+    const [products, setProducts] = useState([])
+
+    useEffect(()=>{
+        fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then(json=>setProducts(json))
+    },[])
+    console.log('products', products[0])
   return (
     <div className='home'>
         <img className='home_image'
@@ -58,6 +66,21 @@ function Home() {
             image="https://images-na.ssl-images-amazon.com/images/I/6125mFrzr6L._AC_SX355_.jpg"
             />
         </div>
+        <div className='home_rows'>
+            {products?.map((product) => (
+                <div className="home_roww">
+                <Product
+                    id = {product.id}
+                    title={product.title}
+                    price={product.price}
+                    rating={Math.round(product.rating.rate)}
+                    image={product.image}
+                
+                />
+                </div>
+            ))}
+        </div>
+       
     </div>
     );
 }

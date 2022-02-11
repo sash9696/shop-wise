@@ -8,11 +8,14 @@
     margin: 10px;
     padding: 20px;
     width: 100%;
-    max-height: 400px;
+    max-height: 900px;
     min-width: 100px;
     background-color: white;
     z-index: 1;
   }
+  .product:hover{
+    transform: scale(1.05)
+}
   
   .product_info {
     height: 100px;

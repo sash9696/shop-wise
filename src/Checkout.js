@@ -8,6 +8,8 @@ function Checkout() {
     const [{basket}] = useStateValue()
     const [itemsArray, setItemsArray] = useState([])
 
+    
+
     useEffect(() => {
       localStorage.setItem('cartData', JSON.stringify(basket));
       console.log("setItem", localStorage.getItem('cartData'))
