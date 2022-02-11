@@ -4,13 +4,13 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Header from './Header';
-import Home from './Home';
-import Checkout from './Checkout';
-import Login from './Login';
+import Header from '../Header/Header';
+import Home from '../Home/Home';
+import Checkout from '../Checkout/Checkout';
+import Login from '../Login/Login';
 import { useEffect } from 'react';
-import { useStateValue } from './StateProvider';
-import db, { auth } from './firebase';
+import { useStateValue } from '../../StateProvider';
+import db, { auth } from '../../firebase';
 
 function App() {
   const [{basket, user}, dispatch] = useStateValue()

@@ -1,6 +1,6 @@
 import React from 'react';
 import './HeaderOptions.css';
-import { useStateValue } from './StateProvider';
+import { useStateValue } from '../../StateProvider';
 
 function HeaderOptions({header, title, email}) {
   const [{user}] = useStateValue()

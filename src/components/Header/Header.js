@@ -4,8 +4,8 @@ import HeaderOptions from './HeaderOptions';
 import { Link } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search'
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
-import { useStateValue } from './StateProvider';
-import { auth } from './firebase';
+import { useStateValue } from '../../StateProvider';
+import { auth } from '../../firebase';
 
 
 function Header() {
@@ -48,7 +48,7 @@ function Header() {
                 
             </div>
             
-            <Link to='/subscription'>
+            <Link to='/'>
                 <HeaderOptions header='Your' title='Subscription' /> 
             </Link>
             <Link to='/checkout'>

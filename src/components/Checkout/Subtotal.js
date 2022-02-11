@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import CurrencyFormat from "react-currency-format";
 import "./Subtotal.css";
-import { useStateValue } from "./StateProvider";
-import { getBasketTotal } from "./reducer";
-import db from "./firebase";
+import { useStateValue } from "../../StateProvider";
+import { getBasketTotal } from "../../reducer";
+import db from "../../firebase";
 import {loadStripe} from '@stripe/stripe-js';
 
 function Subtotal() {
