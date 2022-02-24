@@ -8,11 +8,10 @@ import { useStateValue } from '../../StateProvider';
 import { auth } from '../../firebase';
 
 
-function Header() {
+function Header({search, setSearch}) {
     const [{basket, user}] = useStateValue();
     const [isOpen, setIsOpen] = useState(false)
     
-   
     
     const login = () => {
         if(user){
@@ -30,7 +29,11 @@ function Header() {
           </Link>
           
           <div className="search_box">
-              <input type='text' />
+              <input 
+                value={search} 
+                type='text' 
+                onChange={e => setSearch(e.target.value)}
+            />
               <SearchIcon className='search_icon'/>
           </div>
       </div>

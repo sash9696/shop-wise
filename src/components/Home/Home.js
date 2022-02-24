@@ -2,7 +2,7 @@ import React,{ useEffect, useState }  from 'react';
 import './Home.css';
 import Product from './Product';
 
-function Home() {
+function Home({search, setSearch}) {
     const [products, setProducts] = useState([])
 
     useEffect(()=>{
@@ -10,14 +10,14 @@ function Home() {
             .then(res=>res.json())
             .then(json=>setProducts(json))
     },[])
-    console.log('products', products[0])
+   
   return (
     <div className='home'>
         <img className='home_image'
             src='https://static.vecteezy.com/system/resources/previews/002/497/872/non_2x/online-shopping-store-with-mobile-application-digital-marketing-and-sale-banner-background-free-vector.jpg' 
             alt=''
         />
-        <div className="home_row">
+        {/* <div className="home_row">
             <Product 
                 id='12'
                 title='HP VH240a 23.8-inch Full HD 1080p IPS LED Monitor with Built-in Speakers and VESA Mounting'
@@ -65,9 +65,9 @@ function Home() {
             rating={4}
             image="https://images-na.ssl-images-amazon.com/images/I/6125mFrzr6L._AC_SX355_.jpg"
             />
-        </div>
+        </div> */}
         <div className='home_rows'>
-            {products?.map((product) => (
+            {products?.filter((item)=> item.title.toLowerCase().includes(search.toLowerCase())).map((product) => (
                 <div className="home_roww">
                 <Product
                     id = {product.id}

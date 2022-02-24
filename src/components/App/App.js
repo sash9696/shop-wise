@@ -11,8 +11,10 @@ import Login from '../Login/Login';
 import { useEffect } from 'react';
 import { useStateValue } from '../../StateProvider';
 import db, { auth } from '../../firebase';
+import { useState } from 'react/cjs/react.development';
 
 function App() {
+  const [search, setSearch] = useState("")
   const [{basket, user}, dispatch] = useStateValue()
   console.log(basket)
   useEffect(()=>{
@@ -40,8 +42,8 @@ function App() {
     <div className="app">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<><Header/><Home/></>} />
-          <Route path="/checkout" element={<><Header/><Checkout/></>} />
+          <Route path="/" element={<><Header search={search} setSearch={setSearch} /><Home search={search} setSearch={setSearch}/></>} />
+          <Route path="/checkout" element={<><Header/><Checkout /></>} />
           <Route path={!user && "/login"} element={<Login/>} />
         </Routes>
       </BrowserRouter>
