@@ -8,10 +8,10 @@ import Header from '../Header/Header';
 import Home from '../Home/Home';
 import Checkout from '../Checkout/Checkout';
 import Login from '../Login/Login';
-import { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { useStateValue } from '../../StateProvider';
 import db, { auth } from '../../firebase';
-import { useState } from 'react/cjs/react.development';
+
 
 function App() {
   const [search, setSearch] = useState("")
