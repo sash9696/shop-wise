@@ -27,6 +27,15 @@ function Login() {
                 navigate('/')
             }).catch((e) => alert(e.message))
     }
+    const guest = () => {
+        
+      auth.signInWithEmailAndPassword("guest@gmail.com", "abcabc")
+      .then((auth)=>{
+         navigate('/')
+      }).catch((error) => {
+          alert(error.message)
+      })
+  }
 
   return (
     <div className="login">
@@ -66,6 +75,11 @@ function Login() {
           By continuing, you agree to Shop-wise Conditions of Use and Privacy
           Notice.
         </p>
+        <button
+          onClick={guest}
+          className="login_register_button">
+          Login as Guest 
+        </button>
         <button
           onClick={register}
           className="login_register_button">
