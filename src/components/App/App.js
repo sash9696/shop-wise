@@ -16,7 +16,6 @@ import db, { auth } from '../../firebase';
 function App() {
   const [search, setSearch] = useState("")
   const [{basket, user}, dispatch] = useStateValue()
-  console.log(basket)
   useEffect(()=>{
     auth.onAuthStateChanged((authUser) => {
       if(authUser){
